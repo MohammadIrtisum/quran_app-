@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+//GetSingleTickerProviderStateMixin help to ANimatied
 class AnimatedMenuAnimationController extends GetxController with GetSingleTickerProviderStateMixin{
   late AnimationController _controller;
   RxBool isPlaying = false.obs;

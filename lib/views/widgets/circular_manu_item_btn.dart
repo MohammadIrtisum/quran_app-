@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class CircularManuItemBtn extends StatelessWidget {
   final IconData iconData;
-  const CircularManuItemBtn({super.key, required this.iconData});
+  final Widget widget;
+  const CircularManuItemBtn({super.key, required this.iconData, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -12,32 +13,7 @@ class CircularManuItemBtn extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         Get.bottomSheet(
-          Padding(padding: EdgeInsets.all(21),
-          child: Container(
-              width: size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(45)
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.light_mode),
-                    Text("  light mode")
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.dark_mode),
-                    Text("  dark mode")
-                  ],
-                )
-              ],
-            ),
-          ),
-          ),
+          widget,
 
         );
       },

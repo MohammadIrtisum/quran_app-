@@ -21,13 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Quran app',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
       debugShowCheckedModeBanner: false,
+      theme:ThemeData.dark(),
+      themeMode: ThemeMode.light,
       home: Home(),
     );
   }

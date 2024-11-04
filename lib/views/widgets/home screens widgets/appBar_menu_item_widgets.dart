@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran_app/views/widgets/circular_manu_item_btn.dart';
+import 'package:quran_app/views/widgets/general%20widgets/bottom_Sheet_uis.dart';
 
 import '../../../controllers/animated_menu_icon_animation_controller.dart';
 
@@ -9,10 +10,11 @@ class AppbarMenuItemWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BottomSheetUis bottomSheetUis = Get.put(BottomSheetUis());
     AnimatedMenuAnimationController animatedMenuAnimationController = Get.put(AnimatedMenuAnimationController());
     var size = Get.size;
     var appBarHeight = AppBar().preferredSize.height;
-    return Obx((()=>AnimatedPositioned(
+    return Obx(()=>AnimatedPositioned(
       left: animatedMenuAnimationController.isPlaying.value?21:0,
       right: animatedMenuAnimationController.isPlaying.value?21:0,
       top: animatedMenuAnimationController.isPlaying.value?21:0,
@@ -113,14 +115,14 @@ class AppbarMenuItemWidgets extends StatelessWidget {
                 opacity:animatedMenuAnimationController.isPlaying.value?1: 0,
                 child: SizedBox(
                   width: size.width - size.width*0.081 -84,
-                  child: Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const CircularManuItemBtn(iconData: Icons.light_mode),
-                      const CircularManuItemBtn(iconData: Icons.bookmark),
-                      const CircularManuItemBtn(iconData: Icons.favorite),
-                      const CircularManuItemBtn(iconData: Icons.manage_search_outlined),
-                      const CircularManuItemBtn(iconData: Icons.info),
+                       CircularManuItemBtn(iconData: Icons.light_mode,widget:bottomSheetUis.themeList(),),
+                       CircularManuItemBtn(iconData: Icons.bookmark,widget: bottomSheetUis.themeList(),),
+                      CircularManuItemBtn(iconData: Icons.favorite,widget: bottomSheetUis.themeList(),),
+                       CircularManuItemBtn(iconData: Icons.manage_search_outlined,widget: bottomSheetUis.themeList(),),
+                       CircularManuItemBtn(iconData: Icons.info,widget: bottomSheetUis.themeList(),),
 
                     ],
                   ),
@@ -130,7 +132,7 @@ class AppbarMenuItemWidgets extends StatelessWidget {
           ],
         ),
       ),
-    ))
+    )
     );
   }
 }
