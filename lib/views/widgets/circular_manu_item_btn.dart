@@ -5,12 +5,13 @@ import 'package:get/get.dart';
 class CircularManuItemBtn extends StatelessWidget {
   final IconData iconData;
   final Widget widget;
-  const CircularManuItemBtn({super.key, required this.iconData, required this.widget});
+  final RxBool isDarkMode;
+  const CircularManuItemBtn({super.key, required this.iconData, required this.widget, required this.isDarkMode});
 
   @override
   Widget build(BuildContext context) {
     var size = Get.size;
-    return GestureDetector(
+    return Obx(()=>GestureDetector(
       onTap: (){
         Get.bottomSheet(
           widget,
@@ -23,11 +24,11 @@ class CircularManuItemBtn extends StatelessWidget {
         width: size.width*.1,
         height:size.width*.1,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isDarkMode.value?Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(1000),
         ),
         child: Icon(iconData),
       ),
-    );
+    ));
   }
 }
