@@ -119,9 +119,9 @@ class AppbarMenuItemWidgets extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                        CircularManuItemBtn(iconData: Icons.light_mode,widget:bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode,),
-                       CircularManuItemBtn(iconData: Icons.bookmark,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode),
-                      CircularManuItemBtn(iconData: Icons.favorite,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode),
-                       CircularManuItemBtn(iconData: Icons.manage_search_outlined,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode),
+                       CircularManuItemBtn(iconData: Icons.bookmark,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode,isMissingFeature: true,),
+                      CircularManuItemBtn(iconData: Icons.favorite,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode,isMissingFeature: true,),
+                       CircularManuItemBtn(iconData: Icons.manage_search_outlined,widget: bottomSheetUis.themeList(),isDarkMode: bottomSheetUis.isDarkMode,isMissingFeature: true,),
                        CircularManuItemBtn(iconData: Icons.info,widget: bottomSheetUis.aboutApp(),isDarkMode: bottomSheetUis.isDarkMode),
 
                     ],
