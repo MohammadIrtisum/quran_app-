@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class BottomSheetUis extends GetxController{
   var size = Get.size;
   RxBool isDarkMode = true.obs;
+
+
+  @override
+  void onInit() {
+    super.onInit();
+    getThemeState();
+  }
+
+  getThemeState() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    if(sharedPreferences.containsKey("dark_Mode")){
+      if(sharedPreferences.getBool("dark_Mode")!){
+        isDarkMode.value = true;
+        Get.changeTheme(ThemeData.dark());
+        Get.changeThemeMode(ThemeMode.dark);
+      }
+      else{
+        isDarkMode.value = false;
+        Get.changeTheme(ThemeData.light());
+        Get.changeThemeMode(ThemeMode.light);
+      }
+    }
+  }
+
+  saveThemeState( bool darkModeEnable) async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool("dark_Mode", darkModeEnable);
+  }
 
   Widget themeList(){
     return Obx(()=>Padding(padding: EdgeInsets.all(21),
@@ -25,6 +54,7 @@ class BottomSheetUis extends GetxController{
               GestureDetector(
                 onTap: (){
                   isDarkMode.value = false;
+                  saveThemeState(isDarkMode.value);
                   Get.changeTheme(ThemeData.light());
                   Get.changeThemeMode(ThemeMode.light);
                 },
@@ -46,6 +76,7 @@ class BottomSheetUis extends GetxController{
               GestureDetector(
                 onTap: (){
                   isDarkMode.value = true;
+                  saveThemeState(isDarkMode.value);
                   Get.changeTheme(ThemeData.dark());
                   Get.changeThemeMode(ThemeMode.dark);
                 },
